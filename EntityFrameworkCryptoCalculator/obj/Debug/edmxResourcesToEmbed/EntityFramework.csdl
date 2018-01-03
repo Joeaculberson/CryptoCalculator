@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CryptoCalculatorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CryptoCalculatorEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="ef_Integration_Delete">
+      <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ef_Integration_Insert" ReturnType="Collection(Guid)">
+      <Parameter Name="NAME" Mode="In" Type="Binary" />
+      <Parameter Name="ENDPOINT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ef_Integration_Update">
+      <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
+      <Parameter Name="NAME" Mode="In" Type="Binary" />
+      <Parameter Name="ENDPOINT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ef_Integration_Delete1">
+      <Parameter Name="ID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ef_Integration_Insert1" ReturnType="Collection(Guid)">
+      <Parameter Name="NAME" Mode="In" Type="String" />
+      <Parameter Name="ENDPOINT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ef_Integration_Update1">
+      <Parameter Name="ID" Mode="In" Type="Guid" />
+      <Parameter Name="NAME" Mode="In" Type="String" />
+      <Parameter Name="ENDPOINT" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Integrations" EntityType="CryptoCalculatorModel.Integration" />
+    <FunctionImport Name="ef_Integration_Delete2">
+      <Parameter Name="ID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ef_Integration_Insert2" ReturnType="Collection(Guid)">
+      <Parameter Name="NAME" Mode="In" Type="String" />
+      <Parameter Name="ENDPOINT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ef_Integration_Update2">
+      <Parameter Name="ID" Mode="In" Type="Guid" />
+      <Parameter Name="NAME" Mode="In" Type="String" />
+      <Parameter Name="ENDPOINT" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Integration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="NAME" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ENDPOINT" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

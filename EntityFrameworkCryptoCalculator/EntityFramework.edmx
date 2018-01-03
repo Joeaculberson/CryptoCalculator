@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CryptoCalculatorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CryptoCalculator.dbo.ef_Integration' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ef_Integration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ENDPOINT" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Function Name="ef_Integration_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="ef_Integration_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="ENDPOINT" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="ef_Integration_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="ENDPOINT" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="CryptoCalculatorModelStoreContainer">
+          <EntitySet Name="ef_Integration" EntityType="Self.ef_Integration" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ef_Integration].[ID] AS [ID], 
+    [ef_Integration].[NAME] AS [NAME], 
+    [ef_Integration].[ENDPOINT] AS [ENDPOINT]
+    FROM [dbo].[ef_Integration] AS [ef_Integration]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CryptoCalculatorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CryptoCalculatorEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="ef_Integration_Delete">
+          <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="ef_Integration_Insert" ReturnType="Collection(Guid)">
+            <Parameter Name="NAME" Mode="In" Type="Binary" />
+            <Parameter Name="ENDPOINT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ef_Integration_Update">
+            <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
+            <Parameter Name="NAME" Mode="In" Type="Binary" />
+            <Parameter Name="ENDPOINT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ef_Integration_Delete1">
+          <Parameter Name="ID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="ef_Integration_Insert1" ReturnType="Collection(Guid)">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="ENDPOINT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ef_Integration_Update1">
+            <Parameter Name="ID" Mode="In" Type="Guid" />
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="ENDPOINT" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Integrations" EntityType="CryptoCalculatorModel.Integration" />
+          <FunctionImport Name="ef_Integration_Delete2">
+            <Parameter Name="ID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="ef_Integration_Insert2" ReturnType="Collection(Guid)">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="ENDPOINT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ef_Integration_Update2">
+            <Parameter Name="ID" Mode="In" Type="Guid" />
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="ENDPOINT" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Integration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ENDPOINT" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CryptoCalculatorModelStoreContainer" CdmEntityContainer="CryptoCalculatorEntities">
+          <EntitySetMapping Name="Integrations">
+            <EntityTypeMapping TypeName="CryptoCalculatorModel.Integration">
+              <MappingFragment StoreEntitySet="ef_Integration">
+                <ScalarProperty Name="ENDPOINT" ColumnName="ENDPOINT" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="CryptoCalculatorModel.Integration">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="CryptoCalculatorModel.Store.ef_Integration_Insert">
+                  <ScalarProperty Name="ENDPOINT" ParameterName="ENDPOINT" />
+                  <ScalarProperty Name="NAME" ParameterName="NAME" />
+                  <ResultBinding Name="ID" ColumnName="ID" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="CryptoCalculatorModel.Store.ef_Integration_Update">
+                  <ScalarProperty Name="ENDPOINT" ParameterName="ENDPOINT" Version="Current" />
+                  <ScalarProperty Name="NAME" ParameterName="NAME" Version="Current" />
+                  <ScalarProperty Name="ID" ParameterName="ID" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="CryptoCalculatorModel.Store.ef_Integration_Delete">
+                  <ScalarProperty Name="ID" ParameterName="ID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ef_Integration_Delete2" FunctionName="CryptoCalculatorModel.Store.ef_Integration_Delete" />
+          <FunctionImportMapping FunctionImportName="ef_Integration_Insert2" FunctionName="CryptoCalculatorModel.Store.ef_Integration_Insert" />
+          <FunctionImportMapping FunctionImportName="ef_Integration_Update2" FunctionName="CryptoCalculatorModel.Store.ef_Integration_Update" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

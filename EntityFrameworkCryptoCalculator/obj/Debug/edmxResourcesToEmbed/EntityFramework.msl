@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CryptoCalculatorModelStoreContainer" CdmEntityContainer="CryptoCalculatorEntities">
+    <EntitySetMapping Name="Integrations">
+      <EntityTypeMapping TypeName="CryptoCalculatorModel.Integration">
+        <MappingFragment StoreEntitySet="ef_Integration">
+          <ScalarProperty Name="ENDPOINT" ColumnName="ENDPOINT" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="CryptoCalculatorModel.Integration">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="CryptoCalculatorModel.Store.ef_Integration_Insert">
+            <ScalarProperty Name="ENDPOINT" ParameterName="ENDPOINT" />
+            <ScalarProperty Name="NAME" ParameterName="NAME" />
+            <ResultBinding Name="ID" ColumnName="ID" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="CryptoCalculatorModel.Store.ef_Integration_Update">
+            <ScalarProperty Name="ENDPOINT" ParameterName="ENDPOINT" Version="Current" />
+            <ScalarProperty Name="NAME" ParameterName="NAME" Version="Current" />
+            <ScalarProperty Name="ID" ParameterName="ID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="CryptoCalculatorModel.Store.ef_Integration_Delete">
+            <ScalarProperty Name="ID" ParameterName="ID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ef_Integration_Delete2" FunctionName="CryptoCalculatorModel.Store.ef_Integration_Delete" />
+    <FunctionImportMapping FunctionImportName="ef_Integration_Insert2" FunctionName="CryptoCalculatorModel.Store.ef_Integration_Insert" />
+    <FunctionImportMapping FunctionImportName="ef_Integration_Update2" FunctionName="CryptoCalculatorModel.Store.ef_Integration_Update" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CryptoCalculatorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CryptoCalculator.dbo.ef_Integration' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ef_Integration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ENDPOINT" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Function Name="ef_Integration_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ef_Integration_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+    <Parameter Name="ENDPOINT" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ef_Integration_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+    <Parameter Name="ENDPOINT" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <EntityContainer Name="CryptoCalculatorModelStoreContainer">
+    <EntitySet Name="ef_Integration" EntityType="Self.ef_Integration" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ef_Integration].[ID] AS [ID], 
+    [ef_Integration].[NAME] AS [NAME], 
+    [ef_Integration].[ENDPOINT] AS [ENDPOINT]
+    FROM [dbo].[ef_Integration] AS [ef_Integration]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
