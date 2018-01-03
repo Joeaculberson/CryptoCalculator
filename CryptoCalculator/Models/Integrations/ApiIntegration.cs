@@ -9,11 +9,11 @@ namespace CryptoCalculator.Models.Integrations
 {
     public abstract class ApiIntegration
     {
-        protected Integration Integration { get; set; }
+        protected UserApiConnection Connection { get; set; }
 
-        protected ApiIntegration(Integration integration)
+        protected ApiIntegration(UserApiConnection connection)
         {
-            this.Integration = integration;
+            this.Connection = connection;
         }
     }
 }

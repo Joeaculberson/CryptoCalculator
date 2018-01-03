@@ -4,9 +4,9 @@
     <EntitySetMapping Name="Integrations">
       <EntityTypeMapping TypeName="CryptoCalculatorModel.Integration">
         <MappingFragment StoreEntitySet="ef_Integration">
+          <ScalarProperty Name="INTEGRATION_ID" ColumnName="INTEGRATION_ID" />
           <ScalarProperty Name="ENDPOINT" ColumnName="ENDPOINT" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="CryptoCalculatorModel.Integration">
@@ -14,15 +14,15 @@
           <InsertFunction FunctionName="CryptoCalculatorModel.Store.ef_Integration_Insert">
             <ScalarProperty Name="ENDPOINT" ParameterName="ENDPOINT" />
             <ScalarProperty Name="NAME" ParameterName="NAME" />
-            <ResultBinding Name="ID" ColumnName="ID" />
+            <ResultBinding Name="INTEGRATION_ID" ColumnName="INTEGRATION_ID" />
           </InsertFunction>
           <UpdateFunction FunctionName="CryptoCalculatorModel.Store.ef_Integration_Update">
+            <ScalarProperty Name="INTEGRATION_ID" ParameterName="INTEGRATION_ID" Version="Current" />
             <ScalarProperty Name="ENDPOINT" ParameterName="ENDPOINT" Version="Current" />
             <ScalarProperty Name="NAME" ParameterName="NAME" Version="Current" />
-            <ScalarProperty Name="ID" ParameterName="ID" Version="Current" />
           </UpdateFunction>
           <DeleteFunction FunctionName="CryptoCalculatorModel.Store.ef_Integration_Delete">
-            <ScalarProperty Name="ID" ParameterName="ID" />
+            <ScalarProperty Name="INTEGRATION_ID" ParameterName="INTEGRATION_ID" />
           </DeleteFunction>
         </ModificationFunctionMapping>
       </EntityTypeMapping>
@@ -30,5 +30,179 @@
     <FunctionImportMapping FunctionImportName="ef_Integration_Delete2" FunctionName="CryptoCalculatorModel.Store.ef_Integration_Delete" />
     <FunctionImportMapping FunctionImportName="ef_Integration_Insert2" FunctionName="CryptoCalculatorModel.Store.ef_Integration_Insert" />
     <FunctionImportMapping FunctionImportName="ef_Integration_Update2" FunctionName="CryptoCalculatorModel.Store.ef_Integration_Update" />
+    <EntitySetMapping Name="UserApiConnections">
+      <EntityTypeMapping TypeName="CryptoCalculatorModel.UserApiConnection">
+        <MappingFragment StoreEntitySet="ef_UserApiConnection">
+          <ScalarProperty Name="API_SECRET" ColumnName="API_SECRET" />
+          <ScalarProperty Name="API_KEY" ColumnName="API_KEY" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="INTEGRATION_ID" ColumnName="INTEGRATION_ID" />
+          <ScalarProperty Name="USER_API_CONNECTION_ID" ColumnName="USER_API_CONNECTION_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="CryptoCalculatorModel.UserApiConnection">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="CryptoCalculatorModel.Store.ef_UserApiConnection_Insert">
+            <ScalarProperty Name="API_SECRET" ParameterName="API_SECRET" />
+            <ScalarProperty Name="API_KEY" ParameterName="API_KEY" />
+            <ScalarProperty Name="USER_ID" ParameterName="USER_ID" />
+            <ScalarProperty Name="INTEGRATION_ID" ParameterName="INTEGRATION_ID" />
+            <ResultBinding Name="USER_API_CONNECTION_ID" ColumnName="USER_API_CONNECTION_ID" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="CryptoCalculatorModel.Store.ef_UserApiConnection_Update">
+            <ScalarProperty Name="API_SECRET" ParameterName="API_SECRET" Version="Current" />
+            <ScalarProperty Name="API_KEY" ParameterName="API_KEY" Version="Current" />
+            <ScalarProperty Name="USER_ID" ParameterName="USER_ID" Version="Current" />
+            <ScalarProperty Name="INTEGRATION_ID" ParameterName="INTEGRATION_ID" Version="Current" />
+            <ScalarProperty Name="USER_API_CONNECTION_ID" ParameterName="USER_API_CONNECTION_ID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="CryptoCalculatorModel.Store.ef_UserApiConnection_Delete">
+            <ScalarProperty Name="USER_API_CONNECTION_ID" ParameterName="USER_API_CONNECTION_ID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ef_UserApiConnection_Delete" FunctionName="CryptoCalculatorModel.Store.ef_UserApiConnection_Delete" />
+    <FunctionImportMapping FunctionImportName="ef_UserApiConnection_Insert" FunctionName="CryptoCalculatorModel.Store.ef_UserApiConnection_Insert" />
+    <FunctionImportMapping FunctionImportName="ef_UserApiConnection_Update" FunctionName="CryptoCalculatorModel.Store.ef_UserApiConnection_Update" />
+    <EntitySetMapping Name="Currencies">
+      <EntityTypeMapping TypeName="CryptoCalculatorModel.Currency">
+        <MappingFragment StoreEntitySet="ef_Currency">
+          <ScalarProperty Name="SYMBOL" ColumnName="SYMBOL" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="CURRENCY_ID" ColumnName="CURRENCY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="CryptoCalculatorModel.Currency">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="CryptoCalculatorModel.Store.ef_Currency_Insert">
+            <ScalarProperty Name="SYMBOL" ParameterName="SYMBOL" />
+            <ScalarProperty Name="NAME" ParameterName="NAME" />
+            <ResultBinding Name="CURRENCY_ID" ColumnName="CURRENCY_ID" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="CryptoCalculatorModel.Store.ef_Currency_Update">
+            <ScalarProperty Name="SYMBOL" ParameterName="SYMBOL" Version="Current" />
+            <ScalarProperty Name="NAME" ParameterName="NAME" Version="Current" />
+            <ScalarProperty Name="CURRENCY_ID" ParameterName="CURRENCY_ID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="CryptoCalculatorModel.Store.ef_Currency_Delete">
+            <ScalarProperty Name="CURRENCY_ID" ParameterName="CURRENCY_ID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionTypes">
+      <EntityTypeMapping TypeName="CryptoCalculatorModel.TransactionType">
+        <MappingFragment StoreEntitySet="ef_TransactionType">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="TRANSACTION_TYPE_ID" ColumnName="TRANSACTION_TYPE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="CryptoCalculatorModel.TransactionType">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="CryptoCalculatorModel.Store.ef_TransactionType_Insert">
+            <ScalarProperty Name="NAME" ParameterName="NAME" />
+            <ResultBinding Name="TRANSACTION_TYPE_ID" ColumnName="TRANSACTION_ID" />
+          </InsertFunction>
+          <DeleteFunction FunctionName="CryptoCalculatorModel.Store.ef_TransactionType_Delete">
+            <ScalarProperty Name="TRANSACTION_TYPE_ID" ParameterName="TRANSACTION_TYPE_ID" />
+          </DeleteFunction>
+          <UpdateFunction FunctionName="CryptoCalculatorModel.Store.ef_TransactionType_Update">
+            <ScalarProperty Name="NAME" ParameterName="NAME" Version="Current" />
+            <ScalarProperty Name="TRANSACTION_TYPE_ID" ParameterName="TRANSACTION_TYPE_ID" Version="Current" />
+          </UpdateFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ef_Currency_Delete" FunctionName="CryptoCalculatorModel.Store.ef_Currency_Delete" />
+    <FunctionImportMapping FunctionImportName="ef_Currency_Insert" FunctionName="CryptoCalculatorModel.Store.ef_Currency_Insert" />
+    <FunctionImportMapping FunctionImportName="ef_Currency_Update" FunctionName="CryptoCalculatorModel.Store.ef_Currency_Update" />
+    <FunctionImportMapping FunctionImportName="ef_TransactionType_Delete" FunctionName="CryptoCalculatorModel.Store.ef_TransactionType_Delete" />
+    <FunctionImportMapping FunctionImportName="ef_TransactionType_Insert" FunctionName="CryptoCalculatorModel.Store.ef_TransactionType_Insert" />
+    <FunctionImportMapping FunctionImportName="ef_TransactionType_Update" FunctionName="CryptoCalculatorModel.Store.ef_TransactionType_Update" />
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="CryptoCalculatorModel.User">
+        <MappingFragment StoreEntitySet="ef_User">
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="CryptoCalculatorModel.User">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="CryptoCalculatorModel.Store.ef_User_Insert">
+            <ScalarProperty Name="EMAIL" ParameterName="EMAIL" />
+            <ScalarProperty Name="PASSWORD" ParameterName="PASSWORD" />
+            <ScalarProperty Name="USERNAME" ParameterName="USERNAME" />
+            <ResultBinding Name="USER_ID" ColumnName="USER_ID" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="CryptoCalculatorModel.Store.ef_User_Update">
+            <ScalarProperty Name="EMAIL" ParameterName="EMAIL" Version="Current" />
+            <ScalarProperty Name="PASSWORD" ParameterName="PASSWORD" Version="Current" />
+            <ScalarProperty Name="USERNAME" ParameterName="USERNAME" Version="Current" />
+            <ScalarProperty Name="USER_ID" ParameterName="USER_ID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="CryptoCalculatorModel.Store.ef_User_Delete">
+            <ScalarProperty Name="USER_ID" ParameterName="USER_ID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ef_User_Delete" FunctionName="CryptoCalculatorModel.Store.ef_User_Delete" />
+    <FunctionImportMapping FunctionImportName="ef_User_Insert" FunctionName="CryptoCalculatorModel.Store.ef_User_Insert" />
+    <FunctionImportMapping FunctionImportName="ef_User_Update" FunctionName="CryptoCalculatorModel.Store.ef_User_Update" />
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="CryptoCalculatorModel.Transaction">
+        <MappingFragment StoreEntitySet="ef_Transaction">
+          <ScalarProperty Name="FEE_CURRENCY" ColumnName="FEE_CURRENCY" />
+          <ScalarProperty Name="FEE" ColumnName="FEE" />
+          <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
+          <ScalarProperty Name="INTEGRATION_ID" ColumnName="INTEGRATION_ID" />
+          <ScalarProperty Name="EXCHANGED_AMOUNT" ColumnName="EXCHANGED_AMOUNT" />
+          <ScalarProperty Name="EXCHANGED_CURRENCY" ColumnName="EXCHANGED_CURRENCY" />
+          <ScalarProperty Name="INITIAL_AMOUNT" ColumnName="INITIAL_AMOUNT" />
+          <ScalarProperty Name="INITIAL_CURRENCY" ColumnName="INITIAL_CURRENCY" />
+          <ScalarProperty Name="TRANSACTION_TYPE_ID" ColumnName="TRANSACTION_TYPE_ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="CryptoCalculatorModel.Transaction">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="CryptoCalculatorModel.Store.ef_Transaction_Insert">
+            <ScalarProperty Name="FEE_CURRENCY" ParameterName="FEE_CURRENCY" />
+            <ScalarProperty Name="FEE" ParameterName="FEE" />
+            <ScalarProperty Name="CREATED_ON" ParameterName="CREATED_ON" />
+            <ScalarProperty Name="INTEGRATION_ID" ParameterName="INTEGRATION_ID" />
+            <ScalarProperty Name="EXCHANGED_AMOUNT" ParameterName="EXCHANGED_AMOUNT" />
+            <ScalarProperty Name="EXCHANGED_CURRENCY" ParameterName="EXCHANGED_CURRENCY" />
+            <ScalarProperty Name="INITIAL_AMOUNT" ParameterName="INITIAL_AMOUNT" />
+            <ScalarProperty Name="INITIAL_CURRENCY" ParameterName="INITIAL_CURRENCY" />
+            <ScalarProperty Name="TRANSACTION_TYPE_ID" ParameterName="TRANSACTION_TYPE_ID" />
+            <ScalarProperty Name="USER_ID" ParameterName="USER_ID" />
+            <ResultBinding Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="CryptoCalculatorModel.Store.ef_Transaction_Insert">
+            <ScalarProperty Name="FEE_CURRENCY" ParameterName="FEE_CURRENCY" Version="Current" />
+            <ScalarProperty Name="FEE" ParameterName="FEE" Version="Current" />
+            <ScalarProperty Name="CREATED_ON" ParameterName="CREATED_ON" Version="Current" />
+            <ScalarProperty Name="INTEGRATION_ID" ParameterName="INTEGRATION_ID" Version="Current" />
+            <ScalarProperty Name="EXCHANGED_AMOUNT" ParameterName="EXCHANGED_AMOUNT" Version="Current" />
+            <ScalarProperty Name="EXCHANGED_CURRENCY" ParameterName="EXCHANGED_CURRENCY" Version="Current" />
+            <ScalarProperty Name="INITIAL_AMOUNT" ParameterName="INITIAL_AMOUNT" Version="Current" />
+            <ScalarProperty Name="INITIAL_CURRENCY" ParameterName="INITIAL_CURRENCY" Version="Current" />
+            <ScalarProperty Name="TRANSACTION_TYPE_ID" ParameterName="TRANSACTION_TYPE_ID" Version="Current" />
+            <ScalarProperty Name="USER_ID" ParameterName="USER_ID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="CryptoCalculatorModel.Store.ef_Transaction_Delete">
+            <ScalarProperty Name="TRANSACTION_ID" ParameterName="TRANSACTION_ID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ef_Transaction_Delete" FunctionName="CryptoCalculatorModel.Store.ef_Transaction_Delete" />
+    <FunctionImportMapping FunctionImportName="ef_Transaction_Insert" FunctionName="CryptoCalculatorModel.Store.ef_Transaction_Insert" />
+    <FunctionImportMapping FunctionImportName="ef_Transaction_Update" FunctionName="CryptoCalculatorModel.Store.ef_Transaction_Update" />
   </EntityContainerMapping>
 </Mapping>

@@ -5,7 +5,7 @@ C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\EntityFramew
 C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\EntityFrameworkCryptoCalculator\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\EntityFrameworkCryptoCalculator\bin\Debug\EntityFramework.xml
 C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\EntityFrameworkCryptoCalculator\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.csprojResolveAssemblyReference.cache
 C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.csproj.CoreCompileInputs.cache
 C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.dll
 C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.pdb
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.csprojResolveAssemblyReference.cache

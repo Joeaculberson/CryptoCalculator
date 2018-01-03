@@ -12,10 +12,11 @@ namespace EntityFrameworkCryptoCalculator
     using System;
     using System.Collections.Generic;
     
-    public partial class Integration
+    public partial class User
     {
-        public string NAME { get; set; }
-        public string ENDPOINT { get; set; }
-        public System.Guid INTEGRATION_ID { get; set; }
+        public System.Guid USER_ID { get; set; }
+        public string USERNAME { get; set; }
+        public string PASSWORD { get; set; }
+        public string EMAIL { get; set; }
     }
 }

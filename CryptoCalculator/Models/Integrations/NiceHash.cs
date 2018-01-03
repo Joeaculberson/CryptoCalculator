@@ -8,7 +8,7 @@ namespace CryptoCalculator.Models.Integrations
 {
     public class NiceHash : ApiIntegration
     {
-        public NiceHash(Integration integration) : base(integration)
+        public NiceHash(UserApiConnection connection) : base(connection)
         {
             
         }

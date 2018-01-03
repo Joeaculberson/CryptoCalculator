@@ -1,34 +1,227 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="CryptoCalculatorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <!--Errors Found During Generation:
+warning 6002: The table/view 'CryptoCalculator.dbo.ef_Currency' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ef_Currency">
+    <Key>
+      <PropertyRef Name="CURRENCY_ID" />
+    </Key>
+    <Property Name="CURRENCY_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SYMBOL" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'CryptoCalculator.dbo.ef_Integration' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ef_Integration">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="INTEGRATION_ID" />
     </Key>
-    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="INTEGRATION_ID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="NAME" Type="nvarchar" MaxLength="256" Nullable="false" />
     <Property Name="ENDPOINT" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CryptoCalculator.dbo.ef_Transaction' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ef_Transaction">
+    <Key>
+      <PropertyRef Name="TRANSACTION_ID" />
+      <PropertyRef Name="USER_ID" />
+      <PropertyRef Name="TRANSACTION_TYPE_ID" />
+      <PropertyRef Name="INITIAL_CURRENCY" />
+      <PropertyRef Name="EXCHANGED_CURRENCY" />
+      <PropertyRef Name="INTEGRATION_ID" />
+      <PropertyRef Name="FEE_CURRENCY" />
+    </Key>
+    <Property Name="TRANSACTION_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="USER_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TRANSACTION_TYPE_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="INITIAL_CURRENCY" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="INITIAL_AMOUNT" Type="bigint" Nullable="false" />
+    <Property Name="EXCHANGED_CURRENCY" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EXCHANGED_AMOUNT" Type="bigint" Nullable="false" />
+    <Property Name="INTEGRATION_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CREATED_ON" Type="datetime" Nullable="false" />
+    <Property Name="FEE" Type="bigint" Nullable="false" />
+    <Property Name="FEE_CURRENCY" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CryptoCalculator.dbo.ef_TransactionType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ef_TransactionType">
+    <Key>
+      <PropertyRef Name="TRANSACTION_TYPE_ID" />
+    </Key>
+    <Property Name="TRANSACTION_TYPE_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CryptoCalculator.dbo.ef_User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ef_User">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="PASSWORD" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="EMAIL" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CryptoCalculator.dbo.ef_UserApiConnection' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ef_UserApiConnection">
+    <Key>
+      <PropertyRef Name="USER_API_CONNECTION_ID" />
+      <PropertyRef Name="INTEGRATION_ID" />
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_API_CONNECTION_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="INTEGRATION_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="USER_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="API_KEY" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="API_SECRET" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Function Name="ef_Currency_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CURRENCY_ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ef_Currency_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NAME" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SYMBOL" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ef_Currency_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CURRENCY_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="NAME" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SYMBOL" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="ef_Integration_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="INTEGRATION_ID" Type="uniqueidentifier" Mode="In" />
   </Function>
   <Function Name="ef_Integration_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NAME" Type="nvarchar" Mode="In" />
     <Parameter Name="ENDPOINT" Type="nvarchar(max)" Mode="In" />
   </Function>
   <Function Name="ef_Integration_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="INTEGRATION_ID" Type="uniqueidentifier" Mode="In" />
     <Parameter Name="NAME" Type="nvarchar" Mode="In" />
     <Parameter Name="ENDPOINT" Type="nvarchar(max)" Mode="In" />
   </Function>
+  <Function Name="ef_Transaction_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TRANSACTION_ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ef_Transaction_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USER_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TRANSACTION_TYPE_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="INITIAL_CURRENCY" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="INITIAL_AMOUNT" Type="bigint" Mode="In" />
+    <Parameter Name="EXCHANGED_CURRENCY" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="EXCHANGED_AMOUNT" Type="bigint" Mode="In" />
+    <Parameter Name="INTEGRATION_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CREATED_ON" Type="datetime" Mode="In" />
+    <Parameter Name="FEE" Type="bigint" Mode="In" />
+    <Parameter Name="FEE_CURRENCY" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ef_Transaction_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TRANSACTION_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="USER_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TRANSACTION_TYPE_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="INITIAL_CURRENCY" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="INITIAL_AMOUNT" Type="bigint" Mode="In" />
+    <Parameter Name="EXCHANGED_CURRENCY" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="EXCHANGED_AMOUNT" Type="bigint" Mode="In" />
+    <Parameter Name="INTEGRATION_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CREATED_ON" Type="datetime" Mode="In" />
+    <Parameter Name="FEE" Type="bigint" Mode="In" />
+    <Parameter Name="FEE_CURRENCY" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ef_TransactionType_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TRANSACTION_TYPE_ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ef_TransactionType_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ef_TransactionType_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TRANSACTION_TYPE_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ef_User_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USER_ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ef_User_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USERNAME" Type="nvarchar" Mode="In" />
+    <Parameter Name="PASSWORD" Type="nvarchar" Mode="In" />
+    <Parameter Name="EMAIL" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ef_User_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USER_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="USERNAME" Type="nvarchar" Mode="In" />
+    <Parameter Name="PASSWORD" Type="nvarchar" Mode="In" />
+    <Parameter Name="EMAIL" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ef_UserApiConnection_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USER_API_CONNECTION_ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ef_UserApiConnection_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="INTEGRATION_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="USER_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="API_KEY" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="API_SECRET" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ef_UserApiConnection_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USER_API_CONNECTION_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="INTEGRATION_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="USER_ID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="API_KEY" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="API_SECRET" Type="nvarchar(max)" Mode="In" />
+  </Function>
   <EntityContainer Name="CryptoCalculatorModelStoreContainer">
+    <EntitySet Name="ef_Currency" EntityType="Self.ef_Currency" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ef_Currency].[CURRENCY_ID] AS [CURRENCY_ID], 
+    [ef_Currency].[NAME] AS [NAME], 
+    [ef_Currency].[SYMBOL] AS [SYMBOL]
+    FROM [dbo].[ef_Currency] AS [ef_Currency]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="ef_Integration" EntityType="Self.ef_Integration" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [ef_Integration].[ID] AS [ID], 
+    [ef_Integration].[INTEGRATION_ID] AS [INTEGRATION_ID], 
     [ef_Integration].[NAME] AS [NAME], 
     [ef_Integration].[ENDPOINT] AS [ENDPOINT]
     FROM [dbo].[ef_Integration] AS [ef_Integration]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ef_Transaction" EntityType="Self.ef_Transaction" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ef_Transaction].[TRANSACTION_ID] AS [TRANSACTION_ID], 
+    [ef_Transaction].[USER_ID] AS [USER_ID], 
+    [ef_Transaction].[TRANSACTION_TYPE_ID] AS [TRANSACTION_TYPE_ID], 
+    [ef_Transaction].[INITIAL_CURRENCY] AS [INITIAL_CURRENCY], 
+    [ef_Transaction].[INITIAL_AMOUNT] AS [INITIAL_AMOUNT], 
+    [ef_Transaction].[EXCHANGED_CURRENCY] AS [EXCHANGED_CURRENCY], 
+    [ef_Transaction].[EXCHANGED_AMOUNT] AS [EXCHANGED_AMOUNT], 
+    [ef_Transaction].[INTEGRATION_ID] AS [INTEGRATION_ID], 
+    [ef_Transaction].[CREATED_ON] AS [CREATED_ON], 
+    [ef_Transaction].[FEE] AS [FEE], 
+    [ef_Transaction].[FEE_CURRENCY] AS [FEE_CURRENCY]
+    FROM [dbo].[ef_Transaction] AS [ef_Transaction]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ef_TransactionType" EntityType="Self.ef_TransactionType" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ef_TransactionType].[TRANSACTION_TYPE_ID] AS [TRANSACTION_TYPE_ID], 
+    [ef_TransactionType].[NAME] AS [NAME]
+    FROM [dbo].[ef_TransactionType] AS [ef_TransactionType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ef_User" EntityType="Self.ef_User" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ef_User].[USER_ID] AS [USER_ID], 
+    [ef_User].[USERNAME] AS [USERNAME], 
+    [ef_User].[PASSWORD] AS [PASSWORD], 
+    [ef_User].[EMAIL] AS [EMAIL]
+    FROM [dbo].[ef_User] AS [ef_User]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ef_UserApiConnection" EntityType="Self.ef_UserApiConnection" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ef_UserApiConnection].[USER_API_CONNECTION_ID] AS [USER_API_CONNECTION_ID], 
+    [ef_UserApiConnection].[INTEGRATION_ID] AS [INTEGRATION_ID], 
+    [ef_UserApiConnection].[USER_ID] AS [USER_ID], 
+    [ef_UserApiConnection].[API_KEY] AS [API_KEY], 
+    [ef_UserApiConnection].[API_SECRET] AS [API_SECRET]
+    FROM [dbo].[ef_UserApiConnection] AS [ef_UserApiConnection]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>

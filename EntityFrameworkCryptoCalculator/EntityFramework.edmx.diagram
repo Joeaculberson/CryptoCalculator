@@ -6,6 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="18335c18027c413fb6feaf4045cd230a" Name="Diagram1">
         <EntityTypeShape EntityType="CryptoCalculatorModel.Integration" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CryptoCalculatorModel.UserApiConnection" Width="3.25" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CryptoCalculatorModel.Currency" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="CryptoCalculatorModel.TransactionType" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="CryptoCalculatorModel.User" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="CryptoCalculatorModel.Transaction" Width="3.25" PointX="0.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

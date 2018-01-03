@@ -12,10 +12,10 @@ namespace EntityFrameworkCryptoCalculator
     using System;
     using System.Collections.Generic;
     
-    public partial class Integration
+    public partial class Currency
     {
+        public System.Guid CURRENCY_ID { get; set; }
         public string NAME { get; set; }
-        public string ENDPOINT { get; set; }
-        public System.Guid INTEGRATION_ID { get; set; }
+        public string SYMBOL { get; set; }
     }
 }

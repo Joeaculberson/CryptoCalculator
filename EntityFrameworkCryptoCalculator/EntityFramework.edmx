@@ -6,34 +6,241 @@
     <edmx:StorageModels>
     <Schema Namespace="CryptoCalculatorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
+warning 6002: The table/view 'CryptoCalculator.dbo.ef_Currency' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ef_Currency">
+          <Key>
+            <PropertyRef Name="CURRENCY_ID" />
+            
+            
+          </Key>
+          <Property Name="CURRENCY_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SYMBOL" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'CryptoCalculator.dbo.ef_Integration' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ef_Integration">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="INTEGRATION_ID" />
+            
+            
           </Key>
-          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="INTEGRATION_ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="NAME" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="ENDPOINT" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CryptoCalculator.dbo.ef_Transaction' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ef_Transaction">
+          <Key>
+            <PropertyRef Name="TRANSACTION_ID" />
+            <PropertyRef Name="USER_ID" />
+            <PropertyRef Name="TRANSACTION_TYPE_ID" />
+            <PropertyRef Name="INITIAL_CURRENCY" />
+            
+            <PropertyRef Name="EXCHANGED_CURRENCY" />
+            
+            <PropertyRef Name="INTEGRATION_ID" />
+            
+            
+            <PropertyRef Name="FEE_CURRENCY" />
+          </Key>
+          <Property Name="TRANSACTION_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="USER_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TRANSACTION_TYPE_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="INITIAL_CURRENCY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="INITIAL_AMOUNT" Type="bigint" Nullable="false" />
+          <Property Name="EXCHANGED_CURRENCY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EXCHANGED_AMOUNT" Type="bigint" Nullable="false" />
+          <Property Name="INTEGRATION_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CREATED_ON" Type="datetime" Nullable="false" />
+          <Property Name="FEE" Type="bigint" Nullable="false" />
+          <Property Name="FEE_CURRENCY" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CryptoCalculator.dbo.ef_TransactionType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ef_TransactionType">
+          <Key>
+            <PropertyRef Name="TRANSACTION_TYPE_ID" />
+            
+          </Key>
+          <Property Name="TRANSACTION_TYPE_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CryptoCalculator.dbo.ef_User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ef_User">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+            
+            
+            
+          </Key>
+          <Property Name="USER_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CryptoCalculator.dbo.ef_UserApiConnection' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ef_UserApiConnection">
+          <Key>
+            <PropertyRef Name="USER_API_CONNECTION_ID" />
+            <PropertyRef Name="INTEGRATION_ID" />
+            <PropertyRef Name="USER_ID" />
+            
+            
+          </Key>
+          <Property Name="USER_API_CONNECTION_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="INTEGRATION_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="USER_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="API_KEY" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="API_SECRET" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Function Name="ef_Currency_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CURRENCY_ID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="ef_Currency_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NAME" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="SYMBOL" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ef_Currency_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CURRENCY_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="NAME" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="SYMBOL" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="ef_Integration_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="INTEGRATION_ID" Type="uniqueidentifier" Mode="In" />
         </Function>
         <Function Name="ef_Integration_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NAME" Type="nvarchar" Mode="In" />
           <Parameter Name="ENDPOINT" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="ef_Integration_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="INTEGRATION_ID" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="NAME" Type="nvarchar" Mode="In" />
           <Parameter Name="ENDPOINT" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="ef_Transaction_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TRANSACTION_ID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="ef_Transaction_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="TRANSACTION_TYPE_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="INITIAL_CURRENCY" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="INITIAL_AMOUNT" Type="bigint" Mode="In" />
+          <Parameter Name="EXCHANGED_CURRENCY" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="EXCHANGED_AMOUNT" Type="bigint" Mode="In" />
+          <Parameter Name="INTEGRATION_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="CREATED_ON" Type="datetime" Mode="In" />
+          <Parameter Name="FEE" Type="bigint" Mode="In" />
+          <Parameter Name="FEE_CURRENCY" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="ef_Transaction_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TRANSACTION_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="USER_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="TRANSACTION_TYPE_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="INITIAL_CURRENCY" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="INITIAL_AMOUNT" Type="bigint" Mode="In" />
+          <Parameter Name="EXCHANGED_CURRENCY" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="EXCHANGED_AMOUNT" Type="bigint" Mode="In" />
+          <Parameter Name="INTEGRATION_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="CREATED_ON" Type="datetime" Mode="In" />
+          <Parameter Name="FEE" Type="bigint" Mode="In" />
+          <Parameter Name="FEE_CURRENCY" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="ef_TransactionType_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TRANSACTION_TYPE_ID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="ef_TransactionType_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ef_TransactionType_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TRANSACTION_TYPE_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ef_User_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_ID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="ef_User_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USERNAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="PASSWORD" Type="nvarchar" Mode="In" />
+          <Parameter Name="EMAIL" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="ef_User_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="USERNAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="PASSWORD" Type="nvarchar" Mode="In" />
+          <Parameter Name="EMAIL" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="ef_UserApiConnection_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_API_CONNECTION_ID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="ef_UserApiConnection_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="INTEGRATION_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="USER_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="API_KEY" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="API_SECRET" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="ef_UserApiConnection_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_API_CONNECTION_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="INTEGRATION_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="USER_ID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="API_KEY" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="API_SECRET" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <EntityContainer Name="CryptoCalculatorModelStoreContainer">
+          <EntitySet Name="ef_Currency" EntityType="Self.ef_Currency" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ef_Currency].[CURRENCY_ID] AS [CURRENCY_ID], 
+    [ef_Currency].[NAME] AS [NAME], 
+    [ef_Currency].[SYMBOL] AS [SYMBOL]
+    FROM [dbo].[ef_Currency] AS [ef_Currency]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="ef_Integration" EntityType="Self.ef_Integration" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [ef_Integration].[ID] AS [ID], 
+    [ef_Integration].[INTEGRATION_ID] AS [INTEGRATION_ID], 
     [ef_Integration].[NAME] AS [NAME], 
     [ef_Integration].[ENDPOINT] AS [ENDPOINT]
     FROM [dbo].[ef_Integration] AS [ef_Integration]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ef_Transaction" EntityType="Self.ef_Transaction" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ef_Transaction].[TRANSACTION_ID] AS [TRANSACTION_ID], 
+    [ef_Transaction].[USER_ID] AS [USER_ID], 
+    [ef_Transaction].[TRANSACTION_TYPE_ID] AS [TRANSACTION_TYPE_ID], 
+    [ef_Transaction].[INITIAL_CURRENCY] AS [INITIAL_CURRENCY], 
+    [ef_Transaction].[INITIAL_AMOUNT] AS [INITIAL_AMOUNT], 
+    [ef_Transaction].[EXCHANGED_CURRENCY] AS [EXCHANGED_CURRENCY], 
+    [ef_Transaction].[EXCHANGED_AMOUNT] AS [EXCHANGED_AMOUNT], 
+    [ef_Transaction].[INTEGRATION_ID] AS [INTEGRATION_ID], 
+    [ef_Transaction].[CREATED_ON] AS [CREATED_ON], 
+    [ef_Transaction].[FEE] AS [FEE], 
+    [ef_Transaction].[FEE_CURRENCY] AS [FEE_CURRENCY]
+    FROM [dbo].[ef_Transaction] AS [ef_Transaction]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ef_TransactionType" EntityType="Self.ef_TransactionType" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ef_TransactionType].[TRANSACTION_TYPE_ID] AS [TRANSACTION_TYPE_ID], 
+    [ef_TransactionType].[NAME] AS [NAME]
+    FROM [dbo].[ef_TransactionType] AS [ef_TransactionType]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ef_User" EntityType="Self.ef_User" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ef_User].[USER_ID] AS [USER_ID], 
+    [ef_User].[USERNAME] AS [USERNAME], 
+    [ef_User].[PASSWORD] AS [PASSWORD], 
+    [ef_User].[EMAIL] AS [EMAIL]
+    FROM [dbo].[ef_User] AS [ef_User]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ef_UserApiConnection" EntityType="Self.ef_UserApiConnection" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ef_UserApiConnection].[USER_API_CONNECTION_ID] AS [USER_API_CONNECTION_ID], 
+    [ef_UserApiConnection].[INTEGRATION_ID] AS [INTEGRATION_ID], 
+    [ef_UserApiConnection].[USER_ID] AS [USER_ID], 
+    [ef_UserApiConnection].[API_KEY] AS [API_KEY], 
+    [ef_UserApiConnection].[API_SECRET] AS [API_SECRET]
+    FROM [dbo].[ef_UserApiConnection] AS [ef_UserApiConnection]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -67,25 +274,168 @@ warning 6002: The table/view 'CryptoCalculator.dbo.ef_Integration' does not have
           </FunctionImport>
           <EntitySet Name="Integrations" EntityType="CryptoCalculatorModel.Integration" />
           <FunctionImport Name="ef_Integration_Delete2">
-            <Parameter Name="ID" Mode="In" Type="Guid" />
+          <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="ef_Integration_Insert2" ReturnType="Collection(Guid)">
             <Parameter Name="NAME" Mode="In" Type="String" />
             <Parameter Name="ENDPOINT" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ef_Integration_Update2">
-            <Parameter Name="ID" Mode="In" Type="Guid" />
+            <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
             <Parameter Name="NAME" Mode="In" Type="String" />
             <Parameter Name="ENDPOINT" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="UserApiConnections" EntityType="CryptoCalculatorModel.UserApiConnection" />
+          <FunctionImport Name="ef_UserApiConnection_Delete">
+          <Parameter Name="USER_API_CONNECTION_ID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="ef_UserApiConnection_Insert" ReturnType="Collection(Guid)">
+            <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
+            <Parameter Name="USER_ID" Mode="In" Type="Guid" />
+            <Parameter Name="API_KEY" Mode="In" Type="String" />
+            <Parameter Name="API_SECRET" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ef_UserApiConnection_Update">
+            <Parameter Name="USER_API_CONNECTION_ID" Mode="In" Type="Guid" />
+            <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
+            <Parameter Name="USER_ID" Mode="In" Type="Guid" />
+            <Parameter Name="API_KEY" Mode="In" Type="String" />
+            <Parameter Name="API_SECRET" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Currencies" EntityType="CryptoCalculatorModel.Currency" />
+          <EntitySet Name="TransactionTypes" EntityType="CryptoCalculatorModel.TransactionType" />
+          <FunctionImport Name="ef_Currency_Delete">
+          <Parameter Name="CURRENCY_ID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="ef_Currency_Insert" ReturnType="Collection(Guid)">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="SYMBOL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ef_Currency_Update">
+            <Parameter Name="CURRENCY_ID" Mode="In" Type="Guid" />
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="SYMBOL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ef_TransactionType_Delete">
+          <Parameter Name="TRANSACTION_TYPE_ID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="ef_TransactionType_Insert" ReturnType="Collection(Guid)">
+          <Parameter Name="NAME" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ef_TransactionType_Update">
+            <Parameter Name="TRANSACTION_TYPE_ID" Mode="In" Type="Guid" />
+            <Parameter Name="NAME" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Users" EntityType="CryptoCalculatorModel.User" />
+          <FunctionImport Name="ef_User_Delete">
+          <Parameter Name="USER_ID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="ef_User_Insert" ReturnType="Collection(Guid)">
+            <Parameter Name="USERNAME" Mode="In" Type="String" />
+            <Parameter Name="PASSWORD" Mode="In" Type="String" />
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ef_User_Update">
+            <Parameter Name="USER_ID" Mode="In" Type="Guid" />
+            <Parameter Name="USERNAME" Mode="In" Type="String" />
+            <Parameter Name="PASSWORD" Mode="In" Type="String" />
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Transactions" EntityType="CryptoCalculatorModel.Transaction" />
+          <FunctionImport Name="ef_Transaction_Delete">
+          <Parameter Name="TRANSACTION_ID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="ef_Transaction_Insert" ReturnType="Collection(Guid)">
+            <Parameter Name="USER_ID" Mode="In" Type="Guid" />
+            <Parameter Name="TRANSACTION_TYPE_ID" Mode="In" Type="Guid" />
+            <Parameter Name="INITIAL_CURRENCY" Mode="In" Type="Guid" />
+            <Parameter Name="INITIAL_AMOUNT" Mode="In" Type="Int64" />
+            <Parameter Name="EXCHANGED_CURRENCY" Mode="In" Type="Guid" />
+            <Parameter Name="EXCHANGED_AMOUNT" Mode="In" Type="Int64" />
+            <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
+            <Parameter Name="CREATED_ON" Mode="In" Type="DateTime" />
+            <Parameter Name="FEE" Mode="In" Type="Int64" />
+            <Parameter Name="FEE_CURRENCY" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="ef_Transaction_Update">
+            <Parameter Name="TRANSACTION_ID" Mode="In" Type="Guid" />
+            <Parameter Name="USER_ID" Mode="In" Type="Guid" />
+            <Parameter Name="TRANSACTION_TYPE_ID" Mode="In" Type="Guid" />
+            <Parameter Name="INITIAL_CURRENCY" Mode="In" Type="Guid" />
+            <Parameter Name="INITIAL_AMOUNT" Mode="In" Type="Int64" />
+            <Parameter Name="EXCHANGED_CURRENCY" Mode="In" Type="Guid" />
+            <Parameter Name="EXCHANGED_AMOUNT" Mode="In" Type="Int64" />
+            <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
+            <Parameter Name="CREATED_ON" Mode="In" Type="DateTime" />
+            <Parameter Name="FEE" Mode="In" Type="Int64" />
+            <Parameter Name="FEE_CURRENCY" Mode="In" Type="Guid" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Integration">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="INTEGRATION_ID" />
           </Key>
-          <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="NAME" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="ENDPOINT" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INTEGRATION_ID" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserApiConnection">
+          <Key>
+            <PropertyRef Name="USER_API_CONNECTION_ID" />
+            <PropertyRef Name="INTEGRATION_ID" />
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_API_CONNECTION_ID" Type="Guid" Nullable="false" />
+          <Property Name="INTEGRATION_ID" Type="Guid" Nullable="false" />
+          <Property Name="USER_ID" Type="Guid" Nullable="false" />
+          <Property Name="API_KEY" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="API_SECRET" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="CURRENCY_ID" />
+          </Key>
+          <Property Name="CURRENCY_ID" Type="Guid" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SYMBOL" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="TRANSACTION_TYPE_ID" />
+          </Key>
+          <Property Name="TRANSACTION_TYPE_ID" Type="Guid" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="Guid" Nullable="false" />
+          <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="TRANSACTION_ID" />
+            <PropertyRef Name="USER_ID" />
+            <PropertyRef Name="TRANSACTION_TYPE_ID" />
+            <PropertyRef Name="INITIAL_CURRENCY" />
+            <PropertyRef Name="EXCHANGED_CURRENCY" />
+            <PropertyRef Name="INTEGRATION_ID" />
+            <PropertyRef Name="FEE_CURRENCY" />
+          </Key>
+          <Property Name="TRANSACTION_ID" Type="Guid" Nullable="false" />
+          <Property Name="USER_ID" Type="Guid" Nullable="false" />
+          <Property Name="TRANSACTION_TYPE_ID" Type="Guid" Nullable="false" />
+          <Property Name="INITIAL_CURRENCY" Type="Guid" Nullable="false" />
+          <Property Name="INITIAL_AMOUNT" Type="Int64" Nullable="false" />
+          <Property Name="EXCHANGED_CURRENCY" Type="Guid" Nullable="false" />
+          <Property Name="EXCHANGED_AMOUNT" Type="Int64" Nullable="false" />
+          <Property Name="INTEGRATION_ID" Type="Guid" Nullable="false" />
+          <Property Name="CREATED_ON" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FEE" Type="Int64" Nullable="false" />
+          <Property Name="FEE_CURRENCY" Type="Guid" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -96,9 +446,9 @@ warning 6002: The table/view 'CryptoCalculator.dbo.ef_Integration' does not have
           <EntitySetMapping Name="Integrations">
             <EntityTypeMapping TypeName="CryptoCalculatorModel.Integration">
               <MappingFragment StoreEntitySet="ef_Integration">
+                <ScalarProperty Name="INTEGRATION_ID" ColumnName="INTEGRATION_ID" />
                 <ScalarProperty Name="ENDPOINT" ColumnName="ENDPOINT" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
             <EntityTypeMapping TypeName="CryptoCalculatorModel.Integration">
@@ -106,15 +456,15 @@ warning 6002: The table/view 'CryptoCalculator.dbo.ef_Integration' does not have
                 <InsertFunction FunctionName="CryptoCalculatorModel.Store.ef_Integration_Insert">
                   <ScalarProperty Name="ENDPOINT" ParameterName="ENDPOINT" />
                   <ScalarProperty Name="NAME" ParameterName="NAME" />
-                  <ResultBinding Name="ID" ColumnName="ID" />
+                  <ResultBinding Name="INTEGRATION_ID" ColumnName="INTEGRATION_ID" />
                 </InsertFunction>
                 <UpdateFunction FunctionName="CryptoCalculatorModel.Store.ef_Integration_Update">
+                  <ScalarProperty Name="INTEGRATION_ID" ParameterName="INTEGRATION_ID" Version="Current" />
                   <ScalarProperty Name="ENDPOINT" ParameterName="ENDPOINT" Version="Current" />
                   <ScalarProperty Name="NAME" ParameterName="NAME" Version="Current" />
-                  <ScalarProperty Name="ID" ParameterName="ID" Version="Current" />
                 </UpdateFunction>
                 <DeleteFunction FunctionName="CryptoCalculatorModel.Store.ef_Integration_Delete">
-                  <ScalarProperty Name="ID" ParameterName="ID" />
+                  <ScalarProperty Name="INTEGRATION_ID" ParameterName="INTEGRATION_ID" />
                 </DeleteFunction>
               </ModificationFunctionMapping>
             </EntityTypeMapping>
@@ -122,6 +472,180 @@ warning 6002: The table/view 'CryptoCalculator.dbo.ef_Integration' does not have
           <FunctionImportMapping FunctionImportName="ef_Integration_Delete2" FunctionName="CryptoCalculatorModel.Store.ef_Integration_Delete" />
           <FunctionImportMapping FunctionImportName="ef_Integration_Insert2" FunctionName="CryptoCalculatorModel.Store.ef_Integration_Insert" />
           <FunctionImportMapping FunctionImportName="ef_Integration_Update2" FunctionName="CryptoCalculatorModel.Store.ef_Integration_Update" />
+          <EntitySetMapping Name="UserApiConnections">
+            <EntityTypeMapping TypeName="CryptoCalculatorModel.UserApiConnection">
+              <MappingFragment StoreEntitySet="ef_UserApiConnection">
+                <ScalarProperty Name="API_SECRET" ColumnName="API_SECRET" />
+                <ScalarProperty Name="API_KEY" ColumnName="API_KEY" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="INTEGRATION_ID" ColumnName="INTEGRATION_ID" />
+                <ScalarProperty Name="USER_API_CONNECTION_ID" ColumnName="USER_API_CONNECTION_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="CryptoCalculatorModel.UserApiConnection">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="CryptoCalculatorModel.Store.ef_UserApiConnection_Insert">
+                  <ScalarProperty Name="API_SECRET" ParameterName="API_SECRET" />
+                  <ScalarProperty Name="API_KEY" ParameterName="API_KEY" />
+                  <ScalarProperty Name="USER_ID" ParameterName="USER_ID" />
+                  <ScalarProperty Name="INTEGRATION_ID" ParameterName="INTEGRATION_ID" />
+                  <ResultBinding Name="USER_API_CONNECTION_ID" ColumnName="USER_API_CONNECTION_ID" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="CryptoCalculatorModel.Store.ef_UserApiConnection_Update">
+                  <ScalarProperty Name="API_SECRET" ParameterName="API_SECRET" Version="Current" />
+                  <ScalarProperty Name="API_KEY" ParameterName="API_KEY" Version="Current" />
+                  <ScalarProperty Name="USER_ID" ParameterName="USER_ID" Version="Current" />
+                  <ScalarProperty Name="INTEGRATION_ID" ParameterName="INTEGRATION_ID" Version="Current" />
+                  <ScalarProperty Name="USER_API_CONNECTION_ID" ParameterName="USER_API_CONNECTION_ID" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="CryptoCalculatorModel.Store.ef_UserApiConnection_Delete">
+                  <ScalarProperty Name="USER_API_CONNECTION_ID" ParameterName="USER_API_CONNECTION_ID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ef_UserApiConnection_Delete" FunctionName="CryptoCalculatorModel.Store.ef_UserApiConnection_Delete" />
+          <FunctionImportMapping FunctionImportName="ef_UserApiConnection_Insert" FunctionName="CryptoCalculatorModel.Store.ef_UserApiConnection_Insert" />
+          <FunctionImportMapping FunctionImportName="ef_UserApiConnection_Update" FunctionName="CryptoCalculatorModel.Store.ef_UserApiConnection_Update" />
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="CryptoCalculatorModel.Currency">
+              <MappingFragment StoreEntitySet="ef_Currency">
+                <ScalarProperty Name="SYMBOL" ColumnName="SYMBOL" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="CURRENCY_ID" ColumnName="CURRENCY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="CryptoCalculatorModel.Currency">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="CryptoCalculatorModel.Store.ef_Currency_Insert">
+                  <ScalarProperty Name="SYMBOL" ParameterName="SYMBOL" />
+                  <ScalarProperty Name="NAME" ParameterName="NAME" />
+                  <ResultBinding Name="CURRENCY_ID" ColumnName="CURRENCY_ID" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="CryptoCalculatorModel.Store.ef_Currency_Update">
+                  <ScalarProperty Name="SYMBOL" ParameterName="SYMBOL" Version="Current" />
+                  <ScalarProperty Name="NAME" ParameterName="NAME" Version="Current" />
+                  <ScalarProperty Name="CURRENCY_ID" ParameterName="CURRENCY_ID" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="CryptoCalculatorModel.Store.ef_Currency_Delete">
+                  <ScalarProperty Name="CURRENCY_ID" ParameterName="CURRENCY_ID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionTypes">
+            <EntityTypeMapping TypeName="CryptoCalculatorModel.TransactionType">
+              <MappingFragment StoreEntitySet="ef_TransactionType">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="TRANSACTION_TYPE_ID" ColumnName="TRANSACTION_TYPE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="CryptoCalculatorModel.TransactionType">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="CryptoCalculatorModel.Store.ef_TransactionType_Insert">
+                  <ScalarProperty Name="NAME" ParameterName="NAME" />
+                  <ResultBinding Name="TRANSACTION_TYPE_ID" ColumnName="TRANSACTION_ID" />
+                </InsertFunction>
+                <DeleteFunction FunctionName="CryptoCalculatorModel.Store.ef_TransactionType_Delete">
+                  <ScalarProperty Name="TRANSACTION_TYPE_ID" ParameterName="TRANSACTION_TYPE_ID" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="CryptoCalculatorModel.Store.ef_TransactionType_Update">
+                  <ScalarProperty Name="NAME" ParameterName="NAME" Version="Current" />
+                  <ScalarProperty Name="TRANSACTION_TYPE_ID" ParameterName="TRANSACTION_TYPE_ID" Version="Current" />
+                </UpdateFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ef_Currency_Delete" FunctionName="CryptoCalculatorModel.Store.ef_Currency_Delete" />
+          <FunctionImportMapping FunctionImportName="ef_Currency_Insert" FunctionName="CryptoCalculatorModel.Store.ef_Currency_Insert" />
+          <FunctionImportMapping FunctionImportName="ef_Currency_Update" FunctionName="CryptoCalculatorModel.Store.ef_Currency_Update" />
+          <FunctionImportMapping FunctionImportName="ef_TransactionType_Delete" FunctionName="CryptoCalculatorModel.Store.ef_TransactionType_Delete" />
+          <FunctionImportMapping FunctionImportName="ef_TransactionType_Insert" FunctionName="CryptoCalculatorModel.Store.ef_TransactionType_Insert" />
+          <FunctionImportMapping FunctionImportName="ef_TransactionType_Update" FunctionName="CryptoCalculatorModel.Store.ef_TransactionType_Update" />
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CryptoCalculatorModel.User">
+              <MappingFragment StoreEntitySet="ef_User">
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="CryptoCalculatorModel.User">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="CryptoCalculatorModel.Store.ef_User_Insert">
+                  <ScalarProperty Name="EMAIL" ParameterName="EMAIL" />
+                  <ScalarProperty Name="PASSWORD" ParameterName="PASSWORD" />
+                  <ScalarProperty Name="USERNAME" ParameterName="USERNAME" />
+                  <ResultBinding Name="USER_ID" ColumnName="USER_ID" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="CryptoCalculatorModel.Store.ef_User_Update">
+                  <ScalarProperty Name="EMAIL" ParameterName="EMAIL" Version="Current" />
+                  <ScalarProperty Name="PASSWORD" ParameterName="PASSWORD" Version="Current" />
+                  <ScalarProperty Name="USERNAME" ParameterName="USERNAME" Version="Current" />
+                  <ScalarProperty Name="USER_ID" ParameterName="USER_ID" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="CryptoCalculatorModel.Store.ef_User_Delete">
+                  <ScalarProperty Name="USER_ID" ParameterName="USER_ID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ef_User_Delete" FunctionName="CryptoCalculatorModel.Store.ef_User_Delete" />
+          <FunctionImportMapping FunctionImportName="ef_User_Insert" FunctionName="CryptoCalculatorModel.Store.ef_User_Insert" />
+          <FunctionImportMapping FunctionImportName="ef_User_Update" FunctionName="CryptoCalculatorModel.Store.ef_User_Update" />
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="CryptoCalculatorModel.Transaction">
+              <MappingFragment StoreEntitySet="ef_Transaction">
+                <ScalarProperty Name="FEE_CURRENCY" ColumnName="FEE_CURRENCY" />
+                <ScalarProperty Name="FEE" ColumnName="FEE" />
+                <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
+                <ScalarProperty Name="INTEGRATION_ID" ColumnName="INTEGRATION_ID" />
+                <ScalarProperty Name="EXCHANGED_AMOUNT" ColumnName="EXCHANGED_AMOUNT" />
+                <ScalarProperty Name="EXCHANGED_CURRENCY" ColumnName="EXCHANGED_CURRENCY" />
+                <ScalarProperty Name="INITIAL_AMOUNT" ColumnName="INITIAL_AMOUNT" />
+                <ScalarProperty Name="INITIAL_CURRENCY" ColumnName="INITIAL_CURRENCY" />
+                <ScalarProperty Name="TRANSACTION_TYPE_ID" ColumnName="TRANSACTION_TYPE_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="CryptoCalculatorModel.Transaction">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="CryptoCalculatorModel.Store.ef_Transaction_Insert">
+                  <ScalarProperty Name="FEE_CURRENCY" ParameterName="FEE_CURRENCY" />
+                  <ScalarProperty Name="FEE" ParameterName="FEE" />
+                  <ScalarProperty Name="CREATED_ON" ParameterName="CREATED_ON" />
+                  <ScalarProperty Name="INTEGRATION_ID" ParameterName="INTEGRATION_ID" />
+                  <ScalarProperty Name="EXCHANGED_AMOUNT" ParameterName="EXCHANGED_AMOUNT" />
+                  <ScalarProperty Name="EXCHANGED_CURRENCY" ParameterName="EXCHANGED_CURRENCY" />
+                  <ScalarProperty Name="INITIAL_AMOUNT" ParameterName="INITIAL_AMOUNT" />
+                  <ScalarProperty Name="INITIAL_CURRENCY" ParameterName="INITIAL_CURRENCY" />
+                  <ScalarProperty Name="TRANSACTION_TYPE_ID" ParameterName="TRANSACTION_TYPE_ID" />
+                  <ScalarProperty Name="USER_ID" ParameterName="USER_ID" />
+                  <ResultBinding Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="CryptoCalculatorModel.Store.ef_Transaction_Insert">
+                  <ScalarProperty Name="FEE_CURRENCY" ParameterName="FEE_CURRENCY" Version="Current" />
+                  <ScalarProperty Name="FEE" ParameterName="FEE" Version="Current" />
+                  <ScalarProperty Name="CREATED_ON" ParameterName="CREATED_ON" Version="Current" />
+                  <ScalarProperty Name="INTEGRATION_ID" ParameterName="INTEGRATION_ID" Version="Current" />
+                  <ScalarProperty Name="EXCHANGED_AMOUNT" ParameterName="EXCHANGED_AMOUNT" Version="Current" />
+                  <ScalarProperty Name="EXCHANGED_CURRENCY" ParameterName="EXCHANGED_CURRENCY" Version="Current" />
+                  <ScalarProperty Name="INITIAL_AMOUNT" ParameterName="INITIAL_AMOUNT" Version="Current" />
+                  <ScalarProperty Name="INITIAL_CURRENCY" ParameterName="INITIAL_CURRENCY" Version="Current" />
+                  <ScalarProperty Name="TRANSACTION_TYPE_ID" ParameterName="TRANSACTION_TYPE_ID" Version="Current" />
+                  <ScalarProperty Name="USER_ID" ParameterName="USER_ID" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="CryptoCalculatorModel.Store.ef_Transaction_Delete">
+                  <ScalarProperty Name="TRANSACTION_ID" ParameterName="TRANSACTION_ID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ef_Transaction_Delete" FunctionName="CryptoCalculatorModel.Store.ef_Transaction_Delete" />
+          <FunctionImportMapping FunctionImportName="ef_Transaction_Insert" FunctionName="CryptoCalculatorModel.Store.ef_Transaction_Insert" />
+          <FunctionImportMapping FunctionImportName="ef_Transaction_Update" FunctionName="CryptoCalculatorModel.Store.ef_Transaction_Update" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

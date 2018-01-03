@@ -216,7 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntityFrameworkCryptoCalculator\EntityFrameworkCryptoCalculator.csproj">
-      <Project>{E4B203FE-A542-432B-B976-1AF14B9E666C}</Project>
+      <Project>{e4b203fe-a542-432b-b976-1af14b9e666c}</Project>
       <Name>EntityFrameworkCryptoCalculator</Name>
     </ProjectReference>
   </ItemGroup>

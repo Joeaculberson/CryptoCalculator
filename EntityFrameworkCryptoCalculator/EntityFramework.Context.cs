@@ -28,6 +28,11 @@ namespace EntityFrameworkCryptoCalculator
         }
     
         public virtual DbSet<Integration> Integrations { get; set; }
+        public virtual DbSet<UserApiConnection> UserApiConnections { get; set; }
+        public virtual DbSet<Currency> Currencies { get; set; }
+        public virtual DbSet<TransactionType> TransactionTypes { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Transaction> Transactions { get; set; }
     
         public virtual int ef_Integration_Delete(Nullable<System.Guid> iNTEGRATION_ID)
         {
@@ -107,13 +112,13 @@ namespace EntityFrameworkCryptoCalculator
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_Integration_Update1", iDParameter, nAMEParameter, eNDPOINTParameter);
         }
     
-        public virtual int ef_Integration_Delete2(Nullable<System.Guid> iD)
+        public virtual int ef_Integration_Delete2(Nullable<System.Guid> iNTEGRATION_ID)
         {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(System.Guid));
+            var iNTEGRATION_IDParameter = iNTEGRATION_ID.HasValue ?
+                new ObjectParameter("INTEGRATION_ID", iNTEGRATION_ID) :
+                new ObjectParameter("INTEGRATION_ID", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_Integration_Delete2", iDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_Integration_Delete2", iNTEGRATION_IDParameter);
         }
     
         public virtual ObjectResult<Nullable<System.Guid>> ef_Integration_Insert2(string nAME, string eNDPOINT)
@@ -129,11 +134,11 @@ namespace EntityFrameworkCryptoCalculator
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("ef_Integration_Insert2", nAMEParameter, eNDPOINTParameter);
         }
     
-        public virtual int ef_Integration_Update2(Nullable<System.Guid> iD, string nAME, string eNDPOINT)
+        public virtual int ef_Integration_Update2(Nullable<System.Guid> iNTEGRATION_ID, string nAME, string eNDPOINT)
         {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(System.Guid));
+            var iNTEGRATION_IDParameter = iNTEGRATION_ID.HasValue ?
+                new ObjectParameter("INTEGRATION_ID", iNTEGRATION_ID) :
+                new ObjectParameter("INTEGRATION_ID", typeof(System.Guid));
     
             var nAMEParameter = nAME != null ?
                 new ObjectParameter("NAME", nAME) :
@@ -143,7 +148,282 @@ namespace EntityFrameworkCryptoCalculator
                 new ObjectParameter("ENDPOINT", eNDPOINT) :
                 new ObjectParameter("ENDPOINT", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_Integration_Update2", iDParameter, nAMEParameter, eNDPOINTParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_Integration_Update2", iNTEGRATION_IDParameter, nAMEParameter, eNDPOINTParameter);
+        }
+    
+        public virtual int ef_UserApiConnection_Delete(Nullable<System.Guid> uSER_API_CONNECTION_ID)
+        {
+            var uSER_API_CONNECTION_IDParameter = uSER_API_CONNECTION_ID.HasValue ?
+                new ObjectParameter("USER_API_CONNECTION_ID", uSER_API_CONNECTION_ID) :
+                new ObjectParameter("USER_API_CONNECTION_ID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_UserApiConnection_Delete", uSER_API_CONNECTION_IDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<System.Guid>> ef_UserApiConnection_Insert(Nullable<System.Guid> iNTEGRATION_ID, Nullable<System.Guid> uSER_ID, string aPI_KEY, string aPI_SECRET)
+        {
+            var iNTEGRATION_IDParameter = iNTEGRATION_ID.HasValue ?
+                new ObjectParameter("INTEGRATION_ID", iNTEGRATION_ID) :
+                new ObjectParameter("INTEGRATION_ID", typeof(System.Guid));
+    
+            var uSER_IDParameter = uSER_ID.HasValue ?
+                new ObjectParameter("USER_ID", uSER_ID) :
+                new ObjectParameter("USER_ID", typeof(System.Guid));
+    
+            var aPI_KEYParameter = aPI_KEY != null ?
+                new ObjectParameter("API_KEY", aPI_KEY) :
+                new ObjectParameter("API_KEY", typeof(string));
+    
+            var aPI_SECRETParameter = aPI_SECRET != null ?
+                new ObjectParameter("API_SECRET", aPI_SECRET) :
+                new ObjectParameter("API_SECRET", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("ef_UserApiConnection_Insert", iNTEGRATION_IDParameter, uSER_IDParameter, aPI_KEYParameter, aPI_SECRETParameter);
+        }
+    
+        public virtual int ef_UserApiConnection_Update(Nullable<System.Guid> uSER_API_CONNECTION_ID, Nullable<System.Guid> iNTEGRATION_ID, Nullable<System.Guid> uSER_ID, string aPI_KEY, string aPI_SECRET)
+        {
+            var uSER_API_CONNECTION_IDParameter = uSER_API_CONNECTION_ID.HasValue ?
+                new ObjectParameter("USER_API_CONNECTION_ID", uSER_API_CONNECTION_ID) :
+                new ObjectParameter("USER_API_CONNECTION_ID", typeof(System.Guid));
+    
+            var iNTEGRATION_IDParameter = iNTEGRATION_ID.HasValue ?
+                new ObjectParameter("INTEGRATION_ID", iNTEGRATION_ID) :
+                new ObjectParameter("INTEGRATION_ID", typeof(System.Guid));
+    
+            var uSER_IDParameter = uSER_ID.HasValue ?
+                new ObjectParameter("USER_ID", uSER_ID) :
+                new ObjectParameter("USER_ID", typeof(System.Guid));
+    
+            var aPI_KEYParameter = aPI_KEY != null ?
+                new ObjectParameter("API_KEY", aPI_KEY) :
+                new ObjectParameter("API_KEY", typeof(string));
+    
+            var aPI_SECRETParameter = aPI_SECRET != null ?
+                new ObjectParameter("API_SECRET", aPI_SECRET) :
+                new ObjectParameter("API_SECRET", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_UserApiConnection_Update", uSER_API_CONNECTION_IDParameter, iNTEGRATION_IDParameter, uSER_IDParameter, aPI_KEYParameter, aPI_SECRETParameter);
+        }
+    
+        public virtual int ef_Currency_Delete(Nullable<System.Guid> cURRENCY_ID)
+        {
+            var cURRENCY_IDParameter = cURRENCY_ID.HasValue ?
+                new ObjectParameter("CURRENCY_ID", cURRENCY_ID) :
+                new ObjectParameter("CURRENCY_ID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_Currency_Delete", cURRENCY_IDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<System.Guid>> ef_Currency_Insert(string nAME, string sYMBOL)
+        {
+            var nAMEParameter = nAME != null ?
+                new ObjectParameter("NAME", nAME) :
+                new ObjectParameter("NAME", typeof(string));
+    
+            var sYMBOLParameter = sYMBOL != null ?
+                new ObjectParameter("SYMBOL", sYMBOL) :
+                new ObjectParameter("SYMBOL", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("ef_Currency_Insert", nAMEParameter, sYMBOLParameter);
+        }
+    
+        public virtual int ef_Currency_Update(Nullable<System.Guid> cURRENCY_ID, string nAME, string sYMBOL)
+        {
+            var cURRENCY_IDParameter = cURRENCY_ID.HasValue ?
+                new ObjectParameter("CURRENCY_ID", cURRENCY_ID) :
+                new ObjectParameter("CURRENCY_ID", typeof(System.Guid));
+    
+            var nAMEParameter = nAME != null ?
+                new ObjectParameter("NAME", nAME) :
+                new ObjectParameter("NAME", typeof(string));
+    
+            var sYMBOLParameter = sYMBOL != null ?
+                new ObjectParameter("SYMBOL", sYMBOL) :
+                new ObjectParameter("SYMBOL", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_Currency_Update", cURRENCY_IDParameter, nAMEParameter, sYMBOLParameter);
+        }
+    
+        public virtual int ef_TransactionType_Delete(Nullable<System.Guid> tRANSACTION_TYPE_ID)
+        {
+            var tRANSACTION_TYPE_IDParameter = tRANSACTION_TYPE_ID.HasValue ?
+                new ObjectParameter("TRANSACTION_TYPE_ID", tRANSACTION_TYPE_ID) :
+                new ObjectParameter("TRANSACTION_TYPE_ID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_TransactionType_Delete", tRANSACTION_TYPE_IDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<System.Guid>> ef_TransactionType_Insert(string nAME)
+        {
+            var nAMEParameter = nAME != null ?
+                new ObjectParameter("NAME", nAME) :
+                new ObjectParameter("NAME", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("ef_TransactionType_Insert", nAMEParameter);
+        }
+    
+        public virtual int ef_TransactionType_Update(Nullable<System.Guid> tRANSACTION_TYPE_ID, string nAME)
+        {
+            var tRANSACTION_TYPE_IDParameter = tRANSACTION_TYPE_ID.HasValue ?
+                new ObjectParameter("TRANSACTION_TYPE_ID", tRANSACTION_TYPE_ID) :
+                new ObjectParameter("TRANSACTION_TYPE_ID", typeof(System.Guid));
+    
+            var nAMEParameter = nAME != null ?
+                new ObjectParameter("NAME", nAME) :
+                new ObjectParameter("NAME", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_TransactionType_Update", tRANSACTION_TYPE_IDParameter, nAMEParameter);
+        }
+    
+        public virtual int ef_User_Delete(Nullable<System.Guid> uSER_ID)
+        {
+            var uSER_IDParameter = uSER_ID.HasValue ?
+                new ObjectParameter("USER_ID", uSER_ID) :
+                new ObjectParameter("USER_ID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_User_Delete", uSER_IDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<System.Guid>> ef_User_Insert(string uSERNAME, string pASSWORD, string eMAIL)
+        {
+            var uSERNAMEParameter = uSERNAME != null ?
+                new ObjectParameter("USERNAME", uSERNAME) :
+                new ObjectParameter("USERNAME", typeof(string));
+    
+            var pASSWORDParameter = pASSWORD != null ?
+                new ObjectParameter("PASSWORD", pASSWORD) :
+                new ObjectParameter("PASSWORD", typeof(string));
+    
+            var eMAILParameter = eMAIL != null ?
+                new ObjectParameter("EMAIL", eMAIL) :
+                new ObjectParameter("EMAIL", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("ef_User_Insert", uSERNAMEParameter, pASSWORDParameter, eMAILParameter);
+        }
+    
+        public virtual int ef_User_Update(Nullable<System.Guid> uSER_ID, string uSERNAME, string pASSWORD, string eMAIL)
+        {
+            var uSER_IDParameter = uSER_ID.HasValue ?
+                new ObjectParameter("USER_ID", uSER_ID) :
+                new ObjectParameter("USER_ID", typeof(System.Guid));
+    
+            var uSERNAMEParameter = uSERNAME != null ?
+                new ObjectParameter("USERNAME", uSERNAME) :
+                new ObjectParameter("USERNAME", typeof(string));
+    
+            var pASSWORDParameter = pASSWORD != null ?
+                new ObjectParameter("PASSWORD", pASSWORD) :
+                new ObjectParameter("PASSWORD", typeof(string));
+    
+            var eMAILParameter = eMAIL != null ?
+                new ObjectParameter("EMAIL", eMAIL) :
+                new ObjectParameter("EMAIL", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_User_Update", uSER_IDParameter, uSERNAMEParameter, pASSWORDParameter, eMAILParameter);
+        }
+    
+        public virtual int ef_Transaction_Delete(Nullable<System.Guid> tRANSACTION_ID)
+        {
+            var tRANSACTION_IDParameter = tRANSACTION_ID.HasValue ?
+                new ObjectParameter("TRANSACTION_ID", tRANSACTION_ID) :
+                new ObjectParameter("TRANSACTION_ID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_Transaction_Delete", tRANSACTION_IDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<System.Guid>> ef_Transaction_Insert(Nullable<System.Guid> uSER_ID, Nullable<System.Guid> tRANSACTION_TYPE_ID, Nullable<System.Guid> iNITIAL_CURRENCY, Nullable<long> iNITIAL_AMOUNT, Nullable<System.Guid> eXCHANGED_CURRENCY, Nullable<long> eXCHANGED_AMOUNT, Nullable<System.Guid> iNTEGRATION_ID, Nullable<System.DateTime> cREATED_ON, Nullable<long> fEE, Nullable<System.Guid> fEE_CURRENCY)
+        {
+            var uSER_IDParameter = uSER_ID.HasValue ?
+                new ObjectParameter("USER_ID", uSER_ID) :
+                new ObjectParameter("USER_ID", typeof(System.Guid));
+    
+            var tRANSACTION_TYPE_IDParameter = tRANSACTION_TYPE_ID.HasValue ?
+                new ObjectParameter("TRANSACTION_TYPE_ID", tRANSACTION_TYPE_ID) :
+                new ObjectParameter("TRANSACTION_TYPE_ID", typeof(System.Guid));
+    
+            var iNITIAL_CURRENCYParameter = iNITIAL_CURRENCY.HasValue ?
+                new ObjectParameter("INITIAL_CURRENCY", iNITIAL_CURRENCY) :
+                new ObjectParameter("INITIAL_CURRENCY", typeof(System.Guid));
+    
+            var iNITIAL_AMOUNTParameter = iNITIAL_AMOUNT.HasValue ?
+                new ObjectParameter("INITIAL_AMOUNT", iNITIAL_AMOUNT) :
+                new ObjectParameter("INITIAL_AMOUNT", typeof(long));
+    
+            var eXCHANGED_CURRENCYParameter = eXCHANGED_CURRENCY.HasValue ?
+                new ObjectParameter("EXCHANGED_CURRENCY", eXCHANGED_CURRENCY) :
+                new ObjectParameter("EXCHANGED_CURRENCY", typeof(System.Guid));
+    
+            var eXCHANGED_AMOUNTParameter = eXCHANGED_AMOUNT.HasValue ?
+                new ObjectParameter("EXCHANGED_AMOUNT", eXCHANGED_AMOUNT) :
+                new ObjectParameter("EXCHANGED_AMOUNT", typeof(long));
+    
+            var iNTEGRATION_IDParameter = iNTEGRATION_ID.HasValue ?
+                new ObjectParameter("INTEGRATION_ID", iNTEGRATION_ID) :
+                new ObjectParameter("INTEGRATION_ID", typeof(System.Guid));
+    
+            var cREATED_ONParameter = cREATED_ON.HasValue ?
+                new ObjectParameter("CREATED_ON", cREATED_ON) :
+                new ObjectParameter("CREATED_ON", typeof(System.DateTime));
+    
+            var fEEParameter = fEE.HasValue ?
+                new ObjectParameter("FEE", fEE) :
+                new ObjectParameter("FEE", typeof(long));
+    
+            var fEE_CURRENCYParameter = fEE_CURRENCY.HasValue ?
+                new ObjectParameter("FEE_CURRENCY", fEE_CURRENCY) :
+                new ObjectParameter("FEE_CURRENCY", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("ef_Transaction_Insert", uSER_IDParameter, tRANSACTION_TYPE_IDParameter, iNITIAL_CURRENCYParameter, iNITIAL_AMOUNTParameter, eXCHANGED_CURRENCYParameter, eXCHANGED_AMOUNTParameter, iNTEGRATION_IDParameter, cREATED_ONParameter, fEEParameter, fEE_CURRENCYParameter);
+        }
+    
+        public virtual int ef_Transaction_Update(Nullable<System.Guid> tRANSACTION_ID, Nullable<System.Guid> uSER_ID, Nullable<System.Guid> tRANSACTION_TYPE_ID, Nullable<System.Guid> iNITIAL_CURRENCY, Nullable<long> iNITIAL_AMOUNT, Nullable<System.Guid> eXCHANGED_CURRENCY, Nullable<long> eXCHANGED_AMOUNT, Nullable<System.Guid> iNTEGRATION_ID, Nullable<System.DateTime> cREATED_ON, Nullable<long> fEE, Nullable<System.Guid> fEE_CURRENCY)
+        {
+            var tRANSACTION_IDParameter = tRANSACTION_ID.HasValue ?
+                new ObjectParameter("TRANSACTION_ID", tRANSACTION_ID) :
+                new ObjectParameter("TRANSACTION_ID", typeof(System.Guid));
+    
+            var uSER_IDParameter = uSER_ID.HasValue ?
+                new ObjectParameter("USER_ID", uSER_ID) :
+                new ObjectParameter("USER_ID", typeof(System.Guid));
+    
+            var tRANSACTION_TYPE_IDParameter = tRANSACTION_TYPE_ID.HasValue ?
+                new ObjectParameter("TRANSACTION_TYPE_ID", tRANSACTION_TYPE_ID) :
+                new ObjectParameter("TRANSACTION_TYPE_ID", typeof(System.Guid));
+    
+            var iNITIAL_CURRENCYParameter = iNITIAL_CURRENCY.HasValue ?
+                new ObjectParameter("INITIAL_CURRENCY", iNITIAL_CURRENCY) :
+                new ObjectParameter("INITIAL_CURRENCY", typeof(System.Guid));
+    
+            var iNITIAL_AMOUNTParameter = iNITIAL_AMOUNT.HasValue ?
+                new ObjectParameter("INITIAL_AMOUNT", iNITIAL_AMOUNT) :
+                new ObjectParameter("INITIAL_AMOUNT", typeof(long));
+    
+            var eXCHANGED_CURRENCYParameter = eXCHANGED_CURRENCY.HasValue ?
+                new ObjectParameter("EXCHANGED_CURRENCY", eXCHANGED_CURRENCY) :
+                new ObjectParameter("EXCHANGED_CURRENCY", typeof(System.Guid));
+    
+            var eXCHANGED_AMOUNTParameter = eXCHANGED_AMOUNT.HasValue ?
+                new ObjectParameter("EXCHANGED_AMOUNT", eXCHANGED_AMOUNT) :
+                new ObjectParameter("EXCHANGED_AMOUNT", typeof(long));
+    
+            var iNTEGRATION_IDParameter = iNTEGRATION_ID.HasValue ?
+                new ObjectParameter("INTEGRATION_ID", iNTEGRATION_ID) :
+                new ObjectParameter("INTEGRATION_ID", typeof(System.Guid));
+    
+            var cREATED_ONParameter = cREATED_ON.HasValue ?
+                new ObjectParameter("CREATED_ON", cREATED_ON) :
+                new ObjectParameter("CREATED_ON", typeof(System.DateTime));
+    
+            var fEEParameter = fEE.HasValue ?
+                new ObjectParameter("FEE", fEE) :
+                new ObjectParameter("FEE", typeof(long));
+    
+            var fEE_CURRENCYParameter = fEE_CURRENCY.HasValue ?
+                new ObjectParameter("FEE_CURRENCY", fEE_CURRENCY) :
+                new ObjectParameter("FEE_CURRENCY", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ef_Transaction_Update", tRANSACTION_IDParameter, uSER_IDParameter, tRANSACTION_TYPE_IDParameter, iNITIAL_CURRENCYParameter, iNITIAL_AMOUNTParameter, eXCHANGED_CURRENCYParameter, eXCHANGED_AMOUNTParameter, iNTEGRATION_IDParameter, cREATED_ONParameter, fEEParameter, fEE_CURRENCYParameter);
         }
     }
 }

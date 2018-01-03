@@ -27,24 +27,167 @@
     </FunctionImport>
     <EntitySet Name="Integrations" EntityType="CryptoCalculatorModel.Integration" />
     <FunctionImport Name="ef_Integration_Delete2">
-      <Parameter Name="ID" Mode="In" Type="Guid" />
+      <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
     </FunctionImport>
     <FunctionImport Name="ef_Integration_Insert2" ReturnType="Collection(Guid)">
       <Parameter Name="NAME" Mode="In" Type="String" />
       <Parameter Name="ENDPOINT" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="ef_Integration_Update2">
-      <Parameter Name="ID" Mode="In" Type="Guid" />
+      <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
       <Parameter Name="NAME" Mode="In" Type="String" />
       <Parameter Name="ENDPOINT" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="UserApiConnections" EntityType="CryptoCalculatorModel.UserApiConnection" />
+    <FunctionImport Name="ef_UserApiConnection_Delete">
+      <Parameter Name="USER_API_CONNECTION_ID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ef_UserApiConnection_Insert" ReturnType="Collection(Guid)">
+      <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
+      <Parameter Name="USER_ID" Mode="In" Type="Guid" />
+      <Parameter Name="API_KEY" Mode="In" Type="String" />
+      <Parameter Name="API_SECRET" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ef_UserApiConnection_Update">
+      <Parameter Name="USER_API_CONNECTION_ID" Mode="In" Type="Guid" />
+      <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
+      <Parameter Name="USER_ID" Mode="In" Type="Guid" />
+      <Parameter Name="API_KEY" Mode="In" Type="String" />
+      <Parameter Name="API_SECRET" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Currencies" EntityType="CryptoCalculatorModel.Currency" />
+    <EntitySet Name="TransactionTypes" EntityType="CryptoCalculatorModel.TransactionType" />
+    <FunctionImport Name="ef_Currency_Delete">
+      <Parameter Name="CURRENCY_ID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ef_Currency_Insert" ReturnType="Collection(Guid)">
+      <Parameter Name="NAME" Mode="In" Type="String" />
+      <Parameter Name="SYMBOL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ef_Currency_Update">
+      <Parameter Name="CURRENCY_ID" Mode="In" Type="Guid" />
+      <Parameter Name="NAME" Mode="In" Type="String" />
+      <Parameter Name="SYMBOL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ef_TransactionType_Delete">
+      <Parameter Name="TRANSACTION_TYPE_ID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ef_TransactionType_Insert" ReturnType="Collection(Guid)">
+      <Parameter Name="NAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ef_TransactionType_Update">
+      <Parameter Name="TRANSACTION_TYPE_ID" Mode="In" Type="Guid" />
+      <Parameter Name="NAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Users" EntityType="CryptoCalculatorModel.User" />
+    <FunctionImport Name="ef_User_Delete">
+      <Parameter Name="USER_ID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ef_User_Insert" ReturnType="Collection(Guid)">
+      <Parameter Name="USERNAME" Mode="In" Type="String" />
+      <Parameter Name="PASSWORD" Mode="In" Type="String" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ef_User_Update">
+      <Parameter Name="USER_ID" Mode="In" Type="Guid" />
+      <Parameter Name="USERNAME" Mode="In" Type="String" />
+      <Parameter Name="PASSWORD" Mode="In" Type="String" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Transactions" EntityType="CryptoCalculatorModel.Transaction" />
+    <FunctionImport Name="ef_Transaction_Delete">
+      <Parameter Name="TRANSACTION_ID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ef_Transaction_Insert" ReturnType="Collection(Guid)">
+      <Parameter Name="USER_ID" Mode="In" Type="Guid" />
+      <Parameter Name="TRANSACTION_TYPE_ID" Mode="In" Type="Guid" />
+      <Parameter Name="INITIAL_CURRENCY" Mode="In" Type="Guid" />
+      <Parameter Name="INITIAL_AMOUNT" Mode="In" Type="Int64" />
+      <Parameter Name="EXCHANGED_CURRENCY" Mode="In" Type="Guid" />
+      <Parameter Name="EXCHANGED_AMOUNT" Mode="In" Type="Int64" />
+      <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
+      <Parameter Name="CREATED_ON" Mode="In" Type="DateTime" />
+      <Parameter Name="FEE" Mode="In" Type="Int64" />
+      <Parameter Name="FEE_CURRENCY" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ef_Transaction_Update">
+      <Parameter Name="TRANSACTION_ID" Mode="In" Type="Guid" />
+      <Parameter Name="USER_ID" Mode="In" Type="Guid" />
+      <Parameter Name="TRANSACTION_TYPE_ID" Mode="In" Type="Guid" />
+      <Parameter Name="INITIAL_CURRENCY" Mode="In" Type="Guid" />
+      <Parameter Name="INITIAL_AMOUNT" Mode="In" Type="Int64" />
+      <Parameter Name="EXCHANGED_CURRENCY" Mode="In" Type="Guid" />
+      <Parameter Name="EXCHANGED_AMOUNT" Mode="In" Type="Int64" />
+      <Parameter Name="INTEGRATION_ID" Mode="In" Type="Guid" />
+      <Parameter Name="CREATED_ON" Mode="In" Type="DateTime" />
+      <Parameter Name="FEE" Mode="In" Type="Int64" />
+      <Parameter Name="FEE_CURRENCY" Mode="In" Type="Guid" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="Integration">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="INTEGRATION_ID" />
     </Key>
-    <Property Name="ID" Type="Guid" Nullable="false" />
     <Property Name="NAME" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
     <Property Name="ENDPOINT" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="INTEGRATION_ID" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserApiConnection">
+    <Key>
+      <PropertyRef Name="USER_API_CONNECTION_ID" />
+      <PropertyRef Name="INTEGRATION_ID" />
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_API_CONNECTION_ID" Type="Guid" Nullable="false" />
+    <Property Name="INTEGRATION_ID" Type="Guid" Nullable="false" />
+    <Property Name="USER_ID" Type="Guid" Nullable="false" />
+    <Property Name="API_KEY" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="API_SECRET" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="CURRENCY_ID" />
+    </Key>
+    <Property Name="CURRENCY_ID" Type="Guid" Nullable="false" />
+    <Property Name="NAME" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SYMBOL" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TransactionType">
+    <Key>
+      <PropertyRef Name="TRANSACTION_TYPE_ID" />
+    </Key>
+    <Property Name="TRANSACTION_TYPE_ID" Type="Guid" Nullable="false" />
+    <Property Name="NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="Guid" Nullable="false" />
+    <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="TRANSACTION_ID" />
+      <PropertyRef Name="USER_ID" />
+      <PropertyRef Name="TRANSACTION_TYPE_ID" />
+      <PropertyRef Name="INITIAL_CURRENCY" />
+      <PropertyRef Name="EXCHANGED_CURRENCY" />
+      <PropertyRef Name="INTEGRATION_ID" />
+      <PropertyRef Name="FEE_CURRENCY" />
+    </Key>
+    <Property Name="TRANSACTION_ID" Type="Guid" Nullable="false" />
+    <Property Name="USER_ID" Type="Guid" Nullable="false" />
+    <Property Name="TRANSACTION_TYPE_ID" Type="Guid" Nullable="false" />
+    <Property Name="INITIAL_CURRENCY" Type="Guid" Nullable="false" />
+    <Property Name="INITIAL_AMOUNT" Type="Int64" Nullable="false" />
+    <Property Name="EXCHANGED_CURRENCY" Type="Guid" Nullable="false" />
+    <Property Name="EXCHANGED_AMOUNT" Type="Int64" Nullable="false" />
+    <Property Name="INTEGRATION_ID" Type="Guid" Nullable="false" />
+    <Property Name="CREATED_ON" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FEE" Type="Int64" Nullable="false" />
+    <Property Name="FEE_CURRENCY" Type="Guid" Nullable="false" />
   </EntityType>
 </Schema>

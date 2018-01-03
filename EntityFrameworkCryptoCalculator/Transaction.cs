@@ -12,10 +12,18 @@ namespace EntityFrameworkCryptoCalculator
     using System;
     using System.Collections.Generic;
     
-    public partial class Integration
+    public partial class Transaction
     {
-        public string NAME { get; set; }
-        public string ENDPOINT { get; set; }
+        public System.Guid TRANSACTION_ID { get; set; }
+        public System.Guid USER_ID { get; set; }
+        public System.Guid TRANSACTION_TYPE_ID { get; set; }
+        public System.Guid INITIAL_CURRENCY { get; set; }
+        public long INITIAL_AMOUNT { get; set; }
+        public System.Guid EXCHANGED_CURRENCY { get; set; }
+        public long EXCHANGED_AMOUNT { get; set; }
         public System.Guid INTEGRATION_ID { get; set; }
+        public System.DateTime CREATED_ON { get; set; }
+        public long FEE { get; set; }
+        public System.Guid FEE_CURRENCY { get; set; }
     }
 }
