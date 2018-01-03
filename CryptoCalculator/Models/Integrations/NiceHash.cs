@@ -10,7 +10,7 @@ namespace CryptoCalculator.Models.Integrations
     {
         public NiceHash(UserApiConnection connection) : base(connection)
         {
-            
+
         }
     }
 }
