@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\CryptoCalculator",
+    "\\CryptoCalculator\\Controllers",
+    "\\CryptoCalculator\\Models",
+    "\\CryptoCalculator\\Models\\Integrations",
+    "\\CryptoCalculator\\Models\\Utils",
+    "\\EntityFrameworkCryptoCalculator"
+  ],
+  "SelectedNode": "\\CryptoCalculator\\Models\\Integrations\\ApiIntegration.cs",
+  "PreviewInSolutionExplorer": false
+}

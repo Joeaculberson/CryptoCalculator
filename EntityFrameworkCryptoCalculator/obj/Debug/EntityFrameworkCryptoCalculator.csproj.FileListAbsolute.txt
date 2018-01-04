@@ -9,3 +9,14 @@ C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\EntityFramew
 C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.dll
 C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.pdb
 C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.csprojResolveAssemblyReference.cache
+C:\Users\Tan's PC\Source\Repos\CryptoCalculator\EntityFrameworkCryptoCalculator\bin\Debug\EntityFrameworkCryptoCalculator.dll.config
+C:\Users\Tan's PC\Source\Repos\CryptoCalculator\EntityFrameworkCryptoCalculator\bin\Debug\EntityFrameworkCryptoCalculator.dll
+C:\Users\Tan's PC\Source\Repos\CryptoCalculator\EntityFrameworkCryptoCalculator\bin\Debug\EntityFrameworkCryptoCalculator.pdb
+C:\Users\Tan's PC\Source\Repos\CryptoCalculator\EntityFrameworkCryptoCalculator\bin\Debug\EntityFramework.dll
+C:\Users\Tan's PC\Source\Repos\CryptoCalculator\EntityFrameworkCryptoCalculator\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Tan's PC\Source\Repos\CryptoCalculator\EntityFrameworkCryptoCalculator\bin\Debug\EntityFramework.xml
+C:\Users\Tan's PC\Source\Repos\CryptoCalculator\EntityFrameworkCryptoCalculator\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Tan's PC\Source\Repos\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.csprojResolveAssemblyReference.cache
+C:\Users\Tan's PC\Source\Repos\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.csproj.CoreCompileInputs.cache
+C:\Users\Tan's PC\Source\Repos\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.dll
+C:\Users\Tan's PC\Source\Repos\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.pdb
