@@ -161,6 +161,7 @@
     <Compile Include="Models\Integrations\CoinBase.cs" />
     <Compile Include="Models\Integrations\Gemini.cs" />
     <Compile Include="Models\Integrations\NiceHash.cs" />
+    <Compile Include="Models\Utils\CalculationsUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
