@@ -27,7 +27,6 @@ D:\Visual Studio Projects\CryptoCalculator\EntityFrameworkCryptoCalculator\bin\D
 D:\Visual Studio Projects\CryptoCalculator\EntityFrameworkCryptoCalculator\bin\Debug\EntityFramework.SqlServer.dll
 D:\Visual Studio Projects\CryptoCalculator\EntityFrameworkCryptoCalculator\bin\Debug\EntityFramework.xml
 D:\Visual Studio Projects\CryptoCalculator\EntityFrameworkCryptoCalculator\bin\Debug\EntityFramework.SqlServer.xml
-D:\Visual Studio Projects\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.csprojResolveAssemblyReference.cache
 D:\Visual Studio Projects\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.csproj.CoreCompileInputs.cache
 D:\Visual Studio Projects\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.dll
 D:\Visual Studio Projects\CryptoCalculator\EntityFrameworkCryptoCalculator\obj\Debug\EntityFrameworkCryptoCalculator.pdb
