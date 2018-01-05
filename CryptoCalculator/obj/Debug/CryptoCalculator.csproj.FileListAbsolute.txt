@@ -268,3 +268,25 @@ D:\Visual Studio Projects\CryptoCalculator\CryptoCalculator\obj\Debug\CryptoCalc
 D:\Visual Studio Projects\CryptoCalculator\CryptoCalculator\obj\Debug\CryptoCalculator.csproj.CoreCompileInputs.cache
 D:\Visual Studio Projects\CryptoCalculator\CryptoCalculator\obj\Debug\CryptoCalculator.dll
 D:\Visual Studio Projects\CryptoCalculator\CryptoCalculator\obj\Debug\CryptoCalculator.pdb
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.CoreUtility.dll
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Text.Data.dll
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Editor.dll
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Utilities.dll
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Imaging.dll
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Threading.dll
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.ImageCatalog.dll
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Validation.dll
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Text.Logic.dll
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Text.UI.Wpf.dll
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Text.UI.dll
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.CoreUtility.xml
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Text.Data.xml
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Editor.xml
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Utilities.xml
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Imaging.xml
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Threading.xml
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.ImageCatalog.xml
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Validation.xml
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Text.Logic.xml
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Text.UI.Wpf.xml
+C:\Users\Joeac\OneDrive\Documents\PersonalProjects\CryptoCalculator\CryptoCalculator\bin\Microsoft.VisualStudio.Text.UI.xml

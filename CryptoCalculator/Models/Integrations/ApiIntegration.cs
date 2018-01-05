@@ -14,11 +14,18 @@ namespace CryptoCalculator.Models.Integrations
     {
         protected UserApiConnection Connection { get; set; }
         protected HttpClient Client { get; set; }
+        protected Integration UserApiIntegration { get; set; }
 
         public ApiIntegration(UserApiConnection connection)
         {
             this.Connection = connection;
             this.Client = new HttpClient();
+            
+            using (CryptoCalculatorEntities dbContext = new CryptoCalculatorEntities())
+            {
+                this.UserApiIntegration = dbContext.Integrations.FirstOrDefault(x => x.INTEGRATION_ID == this.Connection.INTEGRATION_ID);
+            }
+            
             this.Client.BaseAddress = new Uri("ENDPOINT HERE");
         }
 
